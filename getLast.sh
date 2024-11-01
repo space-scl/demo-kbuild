@@ -2,6 +2,7 @@
 
 # script running script
 workDir=`dirname "$(readlink -f "$0")"`
+echo $workDir   $1
 
 # future command to run
 cmdline="last "
