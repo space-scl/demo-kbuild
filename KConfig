@@ -1,6 +1,8 @@
 choice SELECT_DESTINATION
     prompt "Select data destination"
-    default DESTINATION_TTY
+    default SELECT_DESTINATION_FILE
+    help
+      Selte TTY or File destination
 
 config SELECT_DESTINATION_TTY
     bool "show data in console"
