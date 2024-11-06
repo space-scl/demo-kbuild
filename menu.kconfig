@@ -1,0 +1,73 @@
+# Top-level menu for the entire configuration
+menu "System Configuration"
+    depends on SELECT_DESTINATION_FILE
+
+    # First submenu for CPU options
+    menu "CPU Options"
+        config CPU_TYPE
+            string "CPU Type"
+            default "x86"
+            help
+              Select the type of CPU architecture. This setting determines
+              the specific optimizations and features available for the CPU.
+
+        config MULTI_CORE
+            bool "Enable Multi-core Support"
+            default y
+            help
+              Enable support for multi-core processors. This option allows
+              the system to utilize multiple CPU cores for improved performance.
+
+    endmenu # End of "CPU Options" menu
+
+    config NETWORKING
+        bool "Enable Networking"
+        default y
+        help
+            Enable networking support. This option is required for any
+            network-related features or protocols.
+
+    # Second submenu for Networking options
+    menu "Networking Options"
+        depends on NETWORKING
+
+        choice
+            prompt "Network protocol"
+            default NET_IPV4
+            depends on MULTI_CORE
+
+            config NET_IPV4
+                bool "Enable IPv4 Support"
+                help
+                Enable support for IPv4 networking. This option is necessary
+                for using IPv4 addresses and related protocols.
+
+            config NET_IPV6
+                bool "Enable IPv6 Support"
+                # Note: Even here select ipV4, but in the output file only one IP protocol can be selected
+                select NET_IPV4
+                help
+                Enable support for IPv6 networking. This option is necessary
+                for using IPv6 addresses and related protocols.
+        endchoice
+
+        # Nested submenu for advanced networking options
+        menu "Advanced Networking Options"
+
+            config NET_FIREWALL
+                bool "Enable Firewall"
+                help
+                  Enable firewall support to protect the system from
+                  unauthorized access and control network traffic.
+
+            config NET_QOS
+                bool "Enable Quality of Service (QoS)"
+                help
+                  Enable Quality of Service (QoS) to manage network traffic
+                  and prioritize certain types of data.
+
+        endmenu # End of "Advanced Networking Options" menu
+
+    endmenu # End of "Networking Options" menu
+
+endmenu # End of "System Configuration" menu

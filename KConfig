@@ -28,3 +28,5 @@ comment "My Feature example to show how to use menuconfig"
 source menuconfig.kconfig
 
 source choice.kconfig
+
+source menu.kconfig
