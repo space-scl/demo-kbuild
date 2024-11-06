@@ -1,0 +1,16 @@
+choice
+    prompt "Select a compression method"
+    default COMPRESS_GZIP
+    # 'optional' allows users to select none of choices
+    optional
+
+config COMPRESS_NONE
+    bool "No compression"
+
+config COMPRESS_GZIP
+    bool "Gzip compression"
+
+config COMPRESS_BZIP2
+    bool "Bzip2 compression"
+
+endchoice

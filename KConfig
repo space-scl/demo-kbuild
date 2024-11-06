@@ -25,6 +25,6 @@ config SHOW_ONLY_CURRENT_USER
       script will get data only for currewnt user
 
 comment "My Feature example to show how to use menuconfig"
-
 source menuconfig.kconfig
-  
+
+source choice.kconfig
