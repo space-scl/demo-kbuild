@@ -1,16 +1,16 @@
-choice SELECT_DESTINATION
-    prompt "Select data destination"
-    default SELECT_DESTINATION_FILE
-    help
-      Selte TTY or File destination
+
 
 config SELECT_DESTINATION_TTY
-    bool "show data in console"
+    bool "save data to tty"
+    default n
+    help
+      Write destination file with relative or full path
 config SELECT_DESTINATION_FILE
     bool "save data to file"
-endchoice
+    default y
 
 
+comment "Destination file"
 config SELECT_DESTINATION_FILE_FILENAME
     string "destination file"
     depends on SELECT_DESTINATION_FILE
@@ -23,3 +23,8 @@ config SHOW_ONLY_CURRENT_USER
     default y
     help
       script will get data only for currewnt user
+
+comment "My Feature example to show how to use menuconfig"
+
+source menuconfig.kconfig
+  

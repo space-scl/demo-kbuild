@@ -1,0 +1,20 @@
+menuconfig MY_FEATURE
+  bool "Enable My Feature"
+  default n
+  help
+    This option enables My Feature. When enabled, additional
+    configuration options for My Feature will be available.
+
+if MY_FEATURE
+
+  config MY_FEATURE_OPTION1
+    bool "Option 1 for My Feature"
+    help
+      This is an additional option for My Feature.
+
+  config MY_FEATURE_OPTION2
+    bool "Option 2 for My Feature"
+    help
+      This is another additional option for My Feature.
+
+endif
