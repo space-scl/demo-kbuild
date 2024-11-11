@@ -1,4 +1,9 @@
 
+mainmenu "My kconfig learning"
+
+config ENV_VAR_1
+    string
+    option env="ENV_VAR"
 
 config SELECT_DESTINATION_TTY
     bool "save data to tty"
@@ -14,7 +19,7 @@ comment "Destination file"
 config SELECT_DESTINATION_FILE_FILENAME
     string "destination file"
     depends on SELECT_DESTINATION_FILE
-    default "last.log"
+    default "test.log" if ENV_VAR_1="y"
     help
       Write destination file with relative or full path
 
@@ -29,4 +34,6 @@ source menuconfig.kconfig
 
 source choice.kconfig
 
+if ENV_VAR_1 = "y"
 source menu.kconfig
+endif
