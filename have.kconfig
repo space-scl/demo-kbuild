@@ -1,0 +1,21 @@
+# Adding common features and make the usage configurable
+
+# Without prompt, it can not be displayed in the menu, but needs the type to pass or get the value
+config HAVE_GENERIC_IOMAP
+    bool
+
+# need the type and default value to export to .config
+config GENERIC_IOMAP
+    bool
+    default y
+    depends on HAVE_GENERIC_IOMAP
+
+#
+# obj-$(CONFIG_GENERIC_IOMAP) += iomap.o
+#
+
+# select can only be used to bool and tristate type
+config x86
+    bool "Enable x86 support"
+    select HAVE_GENERIC_IOMAP
+

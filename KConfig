@@ -1,6 +1,7 @@
 
 mainmenu "My kconfig learning"
 
+# Use config symbol to get environment variable
 config ENV_VAR_1
     string
     option env="ENV_VAR"
@@ -19,7 +20,7 @@ comment "Destination file"
 config SELECT_DESTINATION_FILE_FILENAME
     string "destination file"
     depends on SELECT_DESTINATION_FILE
-    default "test.log" if ENV_VAR_1="y"
+    default "test.log" if ENV_VAR_1="n"
     help
       Write destination file with relative or full path
 
@@ -37,3 +38,7 @@ source choice.kconfig
 if ENV_VAR_1 = "y"
 source menu.kconfig
 endif
+
+source have.kconfig
+
+
