@@ -2,12 +2,13 @@
 
 # Without prompt, it can not be displayed in the menu, but needs the type to pass or get the value
 config HAVE_GENERIC_IOMAP
-    bool
+    def_bool n
 
 # need the type and default value to export to .config
+# must give the default value, otherwise it has no value to export
+# the function of 'depend on' only display the option when the condition is true, but not to set the value
 config GENERIC_IOMAP
-    bool
-    default y
+    def_bool y
     depends on HAVE_GENERIC_IOMAP
 
 #
@@ -17,5 +18,6 @@ config GENERIC_IOMAP
 # select can only be used to bool and tristate type
 config x86
     bool "Enable x86 support"
+    default y
     select HAVE_GENERIC_IOMAP
 
