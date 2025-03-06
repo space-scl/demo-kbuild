@@ -30,6 +30,13 @@ config SHOW_ONLY_CURRENT_USER
     help
       script will get data only for currewnt user
 
+config MY_MODULE
+    tristate "Enable My Module"
+    default n
+    help
+      This option enables My Module. When enabled, additional
+      configuration options for My Module will be available.
+
 comment "My Feature example to show how to use menuconfig"
 source menuconfig.kconfig
 
